@@ -1,0 +1,8 @@
+#!/bin/bash
+nohup spark-submit --class streaming.OdPairStream --master yarn --deploy-mode cluster --num-executors 10 --driver-class-path /root/ojdbc6-11.2.0.3.jar /root/kafka-Integration-jar-with-dependencies.jar > /root/OdPairStream.log 2>&1 &
+
+nohup spark-submit --class streaming.NetWorkLoadStream --master yarn --deploy-mode cluster --num-executors 10 --driver-class-path /root/ojdbc6-11.2.0.3.jar /root/kafka-Integration-jar-with-dependencies.jar > /root/NetWorkLoadStream.log 2>&1 &
+
+nohup spark-submit --class streaming.SecurityIndicatorsStream --master yarn --deploy-mode cluster --num-executors 10 --driver-class-path /root/ojdbc6-11.2.0.3.jar /root/kafka-Integration-jar-with-dependencies.jar > /root/SecurityIndicatorsStream.log 2>&1 &
+
+nohup spark-submit --class streaming.DistributeStream --master yarn --deploy-mode cluster --num-executors 5 --driver-class-path ojdbc6-11.2.0.3.jar /root/kafka-Integration-jar-with-dependencies.jar > /root/DistributeStream.log 2>&1 &
